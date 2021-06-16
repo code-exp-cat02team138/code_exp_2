@@ -52,7 +52,7 @@ function ChallengesScreen({ navigation }) {
               marginLeft: 14,
             }}
           >
-            Today's Challenges
+            COMPETE
           </Text>
           <TodayChallengeCarousel navigation={navigation} screenname={"Specific Challenge"} />
       </View>
@@ -68,7 +68,7 @@ function ChallengesScreen({ navigation }) {
             textAlign: "right",
           }}
         >
-          Social Challenges
+          COOPERATE
         </Text>
         <SocialChallengeCarousel />
       </View>

@@ -5,24 +5,23 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const {width} = Dimensions.get("window");
 const challenges = [
-  { title: "100 Push-Ups",
-  description: "Do a 100 Push-Ups in 3 Minutes.",
-  detailedDescription: "Test your arms muscles with this Challenge! Do 100 Push-Ups in 3 Minutes, Take a video of yoourself and share it with everyone!",
+  { title: "3KM Run",
+  description: "@sarah24 has challenged you to run 3KM",
+  detailedDescription: "@sarah24 has challenged you to a run! Go for a 3KM run and see who comes out on top!",
+  image: "https://www.active.com/Assets/Running/460/fartlek-beat-competition-460.jpg",
+}, { title: "Push Ups",
+  description: "@james_fitness has challenged you to a Push-up challenge! Will you take him on?",
   image: "https://www.helpguide.org/wp-content/uploads/young-woman-performing-pushups-indoors-768.jpg",
-}, { title: "3km Run",
-  description: "Go on a 3km Run!",
-  image: "https://www.sciencemag.org/sites/default/files/styles/article_main_image_-_1280w__no_aspect_/public/1036780592-1280x720.jpg?itok=kgLC8iTd",
-}, { title: "Pump Iron",
-  description: "Head to your nearest Gym and get a work out going!",
-  image: 'https://img.etimg.com/photo/msid-74747053,quality-100/for-miles-a-great-bodyweight-workout-would-include-squats-push-ups-walking-lunges-.jpg',
-}, { title: 'Yoga',
-  description: 'Try these basic Yoga poses for a healthy body and clear mind.',
-  image: 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/10/Female_Yoga_1296x728-header-1296x729.jpg?w=1155&h=2268',
+}, { title: "Burpees",
+  description: "@juliet_lim thinks she can do more burpees than you! Is she right?",
+  image: 'https://cdn2.coachmag.co.uk/sites/coachmag/files/styles/insert_main_wide_image/public/2017/12/burpee.jpg?itok=uJ0vAAcx',
+}, { title: 'Planks',
+  description: '@charles_ong is planking hard! Thank youre better?',
+  image: 'https://30dayfitness.app/static/a2902a44283070e930abe70bb77cc4d6/planks-for-beginners.jpeg',
 },
 ]
 
-
-export default class TodayChallengeCarousel extends React.Component {
+export default class CompeteCarousel extends React.Component {
 
   state = {
     active: 0
