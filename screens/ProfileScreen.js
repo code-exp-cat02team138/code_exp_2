@@ -5,6 +5,8 @@ import {
   View,
   ScrollView,
   Image,
+  FlatList,
+  TouchableOpacity,
 } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import BadgeCarousel from "./BadgeCarousel";
@@ -12,52 +14,45 @@ import BadgeCarousel from "./BadgeCarousel";
 const SAMPLE_POSTS = [
   {
     username: "james_fitness",
-    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum quas quos in asperiores repellendus mollitia esse",
-    isChallenge: false,
+    challengeText: "[CHALLENGE: 100 push-ups in 2 minutes]",
+    text: "Nice! Challenge completed!",
     id: "1",
     image:
-      "https://www.helpguide.org/wp-content/uploads/young-woman-performing-pushups-indoors-768.jpg",
+      "https://thumbs.dreamstime.com/b/young-man-doing-push-up-handsome-sporty-vietnamese-ups-gym-floor-139977973.jpg",
     comments: [
       {
-        commenter_img: PROFILE_IMG,
-        commenter: "applesaurce",
-        comment:
-          "really like apples tho kjhsdafkl;jsdfkljasdl;fjskladjvklashdlfkjaslfkjl;askdfjl;askdfjl;kdhfgkladjsfgkl;jawekl;fjlkasdfend",
+        commenter: "jackson_lim",
+        comment: "oh nice awesome man! keep it going",
       },
       {
-        commenter_img: PROFILE_IMG,
-        commenter: "orangesauce",
-        comment: "really like orange tho",
+        commenter: "apple_juice",
+        comment: "solid work bro!",
       },
       {
-        commenter_img: PROFILE_IMG,
-        commenter: "bananasauce",
-        comment: "really like banana tho",
+        commenter: "zi_qian12",
+        comment: "nice! IPPT sure gold",
       },
       {
-        commenter_img: PROFILE_IMG,
-        commenter: "limesauce",
-        comment: "really like lime tho",
+        commenter: "cheemeng95",
+        comment: "ups laaaaa",
       },
     ],
   },
   {
-    username: "james_fitness",
+    username: "pamela",
     text: "twotwotwotwo",
     isChallenge: true,
     id: "2",
-    image:
-      "https://www.sciencemag.org/sites/default/files/styles/article_main_image_-_1280w__no_aspect_/public/1036780592-1280x720.jpg?itok=kgLC8iTd",
   },
   {
-    username: "james_fitness",
+    username: "wayne",
     text: "threethreethree",
     id: "3",
     image:
       "https://www.sciencemag.org/sites/default/files/styles/article_main_image_-_1280w__no_aspect_/public/1036780592-1280x720.jpg?itok=kgLC8iTd",
   },
   {
-    username: "james_fitness",
+    username: "madhu",
     text: "fourfourfour",
     id: "4",
     image:
@@ -70,6 +65,8 @@ const PROFILE_IMG =
 
 const Stack = createStackNavigator();
 
+let count = -1;
+
 export default function ProfileStack() {
   return (
     <Stack.Navigator>
@@ -79,17 +76,100 @@ export default function ProfileStack() {
 }
 
 function ProfileScreen() {
+  function renderItem({ item }) {
+    count++;
+    return (
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "flex-start",
+          height: item.image ? 300 : 80,
+          width: "100%",
+          backgroundColor:
+            count % 3 == 0 ? "#2a9d8f" : count % 3 == 1 ? "#e9c46a" : "#f4a261",
+        }}
+      >
+        <View
+          style={{
+            flex: 2,
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
+          <Image
+            source={{ uri: PROFILE_IMG }}
+            style={{
+              width: 40,
+              height: 40,
+              marginLeft: 15,
+              marginTop: 15,
+              borderRadius: 100,
+            }}
+          ></Image>
+        </View>
+        <View
+          style={{
+            flexDirection: "column",
+            flex: 8,
+            justifyContent: "flex-start",
+            fontFamily: "System",
+          }}
+        >
+          <View>
+            <Text
+              style={{
+                fontSize: 14,
+                fontFamily: "System",
+                fontWeight: "bold",
+                color: "white",
+                marginTop: 15,
+              }}
+            >
+              @{item.username}
+            </Text>
+            <Text style={{ color: "white" }}>
+              {item.text.length > 110
+                ? `${item.text.substring(0, 111)}...read more`
+                : item.text}
+            </Text>
+          </View>
+          <View>
+            <Image
+              source={{ uri: item.image }}
+              style={{
+                width: "95%",
+                height: 210,
+                borderRadius: 20,
+                marginTop: 10,
+              }}
+            />
+          </View>
+        </View>
+      </View>
+    );
+  }
+
   return (
-    <ScrollView style={{ flexDirection: "column" }}>
-      <View id="dp_name_bio" style={{ flexDirection: "row" }}>
+    <ScrollView style={{ flexDirection: "column", backgroundColor: "#2a9d8f" }}>
+      <View
+        id="dp_name_bio"
+        style={{
+          flexDirection: "row",
+          backgroundColor: "#e9c46a",
+          width: "90%",
+          alignSelf: "center",
+          marginTop: 10,
+          borderRadius: 20,
+        }}
+      >
         <Image
           source={{ uri: PROFILE_IMG }}
           style={{
-            height: 130,
-            width: 130,
+            height: 50,
+            width: 50,
             borderRadius: 100,
             marginLeft: 10,
-            marginTop: 10,
+            marginVertical: 10,
           }}
         ></Image>
         <View
@@ -100,39 +180,57 @@ function ProfileScreen() {
             marginLeft: 10,
           }}
         >
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+          <Text style={{ fontSize: 20, fontWeight: "bold", color: "white" }}>
             @james_fitness
           </Text>
-          <Text style={{ marginTop: 10, width: "80%" }}>
-            I'm a fitness enthusiast living in Singapore
+          <Text style={{ marginVertical: 2, width: "100%", color: "#264653" }}>
+            Fitness enthusiast living in Singapore
           </Text>
         </View>
       </View>
       <View
         id="badges"
-        style={{ flexDirection: "column", marginTop: 20, height: 200 }}
+        style={{
+          flexDirection: "column",
+          marginVertical: 5,
+          height: 250,
+          alignItems: "flex-start",
+          backgroundColor:'#f4a261'
+        }}
       >
-        <Text style={{ fontSize: 15, marginLeft: 3 }}>
-          Badges - Swipte to see challenges you've completed
+        <Text
+          style={{
+            fontSize: 14,
+            marginVertical: 5,
+            width: "90%",
+            paddingVertical: 1,
+            borderRadius: 10,
+            color: "black",
+            textAlign: "left",
+            fontWeight: 'bold',
+            marginLeft: 5
+          }}
+        >
+          Badges - Swipe to see challenges you've completed
         </Text>
         <BadgeCarousel />
       </View>
       <View
-        id="personal posts"
-        style={{ marginTop: 10, fontSize: 15, marginLeft: 3 }}
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          backgroundColor: "#2a9d8f",
+        }}
       >
-        <Text>Your Posts</Text>
-          {SAMPLE_POSTS.map((p) => (
-            <View
-              style={{ width: "100%", height: 350, flexDirection: "column", }}
-            >
-              <Image
-                source={{ uri: p.image }}
-                style={{ width: "100%", height: 200 }}
-              />
-              <Text style={{fontSize: 20, marginTop: 30, textAlign:'center'}}>"{p.text}"</Text>
-            </View>
-          ))}
+        <Text style={{alignSelf: 'flex-start', marginLeft:5, color:'white', fontWeight: 'bold'}}>Your Posts</Text>
+        <FlatList
+          style={{ width: "100%" }}
+          data={SAMPLE_POSTS}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
       </View>
     </ScrollView>
   );

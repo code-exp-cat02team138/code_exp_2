@@ -111,14 +111,17 @@ function Post({ navigation, route }) {
           style={{
             flexDirection: "row",
             alignItems: "flex-start",
+            alignSelf: 'center',
             height: item.image ? 300 : 80,
-            width: "100%",
+            width: "95%",
             backgroundColor:
               count % 3 == 0
                 ? "#2a9d8f"
                 : count % 3 == 1
                 ? "#e9c46a"
                 : "#f4a261",
+                borderRadius: 20,
+                marginVertical: 5
           }}
         >
           <View
@@ -189,7 +192,7 @@ function Post({ navigation, route }) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "flex-start",
-        backgroundColor: "white",
+        backgroundColor: "#264653",
       }}
     >
       <FlatList
@@ -212,9 +215,9 @@ function SpecificPostScreen({ navigation, route }) {
         flexDirection: "column",
         backgroundColor:
           rando % 3 == 0 ? "#2a9d8f" : count % 3 == 1 ? "#e9c46a" : "#f4a261",
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
-          height: '100%'
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+        height: "100%",
       }}
     >
       <View
@@ -223,7 +226,7 @@ function SpecificPostScreen({ navigation, route }) {
           flexDirection: "row",
           alignItems: "center",
           marginBottom: 10,
-          marginLeft: 8
+          marginLeft: 8,
         }}
       >
         <Image
@@ -247,21 +250,37 @@ function SpecificPostScreen({ navigation, route }) {
           @{route.params.item.username}
         </Text>
       </View>
-      <View id="picture and post" style={{ flexDirection: "column", width: '100%' }}>
+      <View
+        id="picture and post"
+        style={{ flexDirection: "column", width: "100%" }}
+      >
         {specItem.image && (
           <Image
             source={{ uri: specItem.image }}
-            style={{ width: "90%", height: 250, resizeMode: "cover", borderRadius: 30, alignSelf:'center' }}
+            style={{
+              width: "90%",
+              height: 250,
+              resizeMode: "cover",
+              borderRadius: 30,
+              alignSelf: "center",
+            }}
           />
         )}
-        <Text style={{ textAlign: "center", fontSize: 20, marginTop: 15, color: 'white' }}>
+        <Text
+          style={{
+            textAlign: "center",
+            fontSize: 20,
+            marginTop: 15,
+            color: "white",
+          }}
+        >
           "{specItem.text}"
         </Text>
       </View>
       {specItem.comments && (
         <View
           id="comment box"
-          style={{ flexDirection: "column", marginTop: 20, }}
+          style={{ flexDirection: "column", marginTop: 20 }}
         >
           {specItem.comments.map((c) => {
             return (
@@ -277,18 +296,19 @@ function SpecificPostScreen({ navigation, route }) {
                   style={{
                     marginLeft: 10,
                     fontWeight: "bold",
-                    color: 'white'
+                    color: "white",
                   }}
                 >
                   @{c.commenter}
                 </Text>
-                <Text style={{ marginLeft: 20, flexWrap: "wrap", color: '#264653'}}>
+                <Text
+                  style={{ marginLeft: 20, flexWrap: "wrap", color: "#264653" }}
+                >
                   {c.comment}
                 </Text>
               </View>
             );
           })}
-          <TextInput></TextInput>
         </View>
       )}
     </View>
@@ -365,14 +385,24 @@ function Create({ navigation }) {
   };
 
   return (
-    <View style={{ flexDirection: "column" }}>
+    <View
+      style={{
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: "#e9c46a",
+        height: "100%",
+      }}
+    >
       {!image && (
         <TouchableOpacity
           style={{
-            width: "100%",
+            width: "90%",
             height: 200,
             justifyContent: "center",
             alignItems: "center",
+            backgroundColor: "#f4a261",
+            borderRadius: 30,
+            marginTop: 30,
           }}
           onPress={pickImage}
         >
@@ -391,6 +421,7 @@ function Create({ navigation }) {
       >
         <TextInput
           style={styles.textInput}
+          placeholderTextColor="white"
           placeholder="Tell us about your Health!"
           multiline
           onChangeText={(e) => setText(e)}
@@ -407,6 +438,10 @@ function Create({ navigation }) {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
+          backgroundColor: "#2a9d8f",
+          paddingVertical: 10,
+          width: "90%",
+          borderRadius: 20,
         }}
       >
         <Text>Submit Post!</Text>
@@ -418,15 +453,18 @@ function Create({ navigation }) {
 const styles = StyleSheet.create({
   textInput: {
     borderColor: "black",
-    backgroundColor: "white",
+    backgroundColor: "#e76f51",
     width: "90%",
     height: 100,
-    marginVertical: 30,
+    marginVertical: 20,
     textAlign: "center",
+    borderRadius: 20,
   },
   createImage: {
-    width: "100%",
+    width: "90%",
     height: 200,
+    borderRadius: 30,
+    marginTop: 30,
   },
   postImage: {
     width: "100%",

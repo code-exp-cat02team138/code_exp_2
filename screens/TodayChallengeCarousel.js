@@ -47,15 +47,15 @@ export default class TodayChallengeCarousel extends React.Component {
           : <View style={{ width, height: 200, flexDirection: "row" }}>
           <View
             id="Challenge Description"
-            style={{ flexDirection: "column", alignItems: "flex-start" }}
+            style={{ flexDirection: "column", alignItems: "flex-start", }}
           >
-            <Text style={{ fontSize: 20, fontWeight: "bolder", textAlign: 'left', marginLeft: 15 }}>
+            <Text style={{ fontSize: 20, fontWeight: "bolder", textAlign: 'left', marginLeft: 15, }}>
               {item.title}
             </Text>
             <Text
               style={{
                 width: 0.35 * width,
-                marginLeft: 15,
+                marginHorizontal: 15,
                 marginTop: 20,
                 textAlign: "center",
                 fontSize: 15,
