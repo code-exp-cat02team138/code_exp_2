@@ -47,23 +47,37 @@ const SAMPLE_POSTS = [
   },
   {
     username: "pamela",
-    text: "twotwotwotwo",
-    isChallenge: true,
+    text: "Feeling like a run tommorow :) Anyone want a challenge?",
     id: "2",
   },
   {
-    username: "wayne",
-    text: "threethreethree",
+    username: "wayne_626",
+    text: "All about that workout grind!!!",
     id: "3",
     image:
-      "https://www.sciencemag.org/sites/default/files/styles/article_main_image_-_1280w__no_aspect_/public/1036780592-1280x720.jpg?itok=kgLC8iTd",
+      "https://image.shutterstock.com/image-photo/young-handsome-asian-men-selfie-260nw-1925391113.jpg",
   },
   {
-    username: "madhu",
-    text: "fourfourfour",
+    username: "annie_ruok",
+    text: "WOO! Gotta eat right to feel right",
     id: "4",
     image:
       "https://www.morelandobgyn.com/hs-fs/hubfs/Imported_Blog_Media/GettyImages-854725402-1.jpg?width=400&name=GettyImages-854725402-1.jpg",
+      comments: [
+        {commenter: 'ginger-half',
+      comment: 'hey looks good! share please'},
+      {commenter: 'san_wen_yu',
+      comment: 'what are u making???'},
+      {commenter: 'brock_caulie',
+    comment: 'looks awesome!!!!'}
+      ]
+  },
+  {
+    username: "fitspo_jane",
+    text: "[CHALLENGE COMPLETE]: @sarah24 aiya was close!",
+    id: "3",
+    image:
+      "https://preview.redd.it/l8lopfdn7eb51.jpg?width=720&format=pjpg&auto=webp&s=b2f241d3656e098efeedf9eb15f31e671d2801a7",
   },
 ];
 
@@ -379,7 +393,7 @@ function Create({ navigation }) {
   };
 
   const item = {
-    username: "jason_fitness",
+    username: "fitspo_jane",
     text: text,
     image: image,
   };

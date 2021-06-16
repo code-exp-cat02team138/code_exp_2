@@ -3,6 +3,11 @@ import { ViewBase, Image, ScrollView, View, Dimensions, StyleSheet, Text } from 
 
 const {width} = Dimensions.get("window");
 const challenges = [
+  { title: "3KM Run",
+  description: "@sarah24 has challenged you to run 3KM",
+  detailedDescription: "@sarah24: Hey Jane! I ran 3KM in 18:02. Think you can do better? Come, come, come and try",
+  image: "https://www.active.com/Assets/Running/460/fartlek-beat-competition-460.jpg"
+  ,accepted: false},
   { title: "100 Push-Ups",
   description: "Do a 100 Push-Ups in 3 Minutes.",
   image: "https://www.helpguide.org/wp-content/uploads/young-woman-performing-pushups-indoors-768.jpg",

@@ -13,50 +13,16 @@ import BadgeCarousel from "./BadgeCarousel";
 
 const SAMPLE_POSTS = [
   {
-    username: "james_fitness",
-    challengeText: "[CHALLENGE: 100 push-ups in 2 minutes]",
-    text: "Nice! Challenge completed!",
-    id: "1",
-    image:
-      "https://thumbs.dreamstime.com/b/young-man-doing-push-up-handsome-sporty-vietnamese-ups-gym-floor-139977973.jpg",
-    comments: [
-      {
-        commenter: "jackson_lim",
-        comment: "oh nice awesome man! keep it going",
-      },
-      {
-        commenter: "apple_juice",
-        comment: "solid work bro!",
-      },
-      {
-        commenter: "zi_qian12",
-        comment: "nice! IPPT sure gold",
-      },
-      {
-        commenter: "cheemeng95",
-        comment: "ups laaaaa",
-      },
-    ],
-  },
-  {
-    username: "pamela",
-    text: "twotwotwotwo",
-    isChallenge: true,
-    id: "2",
-  },
-  {
-    username: "wayne",
-    text: "threethreethree",
+    username: "fitspo_jane",
+    text: "[CHALLENGE COMPLETE]: @sarah24 aiya was close!",
     id: "3",
     image:
-      "https://www.sciencemag.org/sites/default/files/styles/article_main_image_-_1280w__no_aspect_/public/1036780592-1280x720.jpg?itok=kgLC8iTd",
+      "https://preview.redd.it/l8lopfdn7eb51.jpg?width=720&format=pjpg&auto=webp&s=b2f241d3656e098efeedf9eb15f31e671d2801a7",
   },
   {
-    username: "madhu",
-    text: "fourfourfour",
-    id: "4",
-    image:
-      "https://www.morelandobgyn.com/hs-fs/hubfs/Imported_Blog_Media/GettyImages-854725402-1.jpg?width=400&name=GettyImages-854725402-1.jpg",
+    username: "fitspo_jane",
+    text: "Hello Everyone",
+    id: "3",
   },
 ];
 
@@ -157,7 +123,7 @@ function ProfileScreen() {
   }
 
   return (
-    <ScrollView style={{ flexDirection: "column", backgroundColor: "#264653" }}>
+    <ScrollView style={{ flexDirection: "column", backgroundColor: "#264653", }}>
       <View
         id="dp_name_bio"
         style={{
@@ -189,7 +155,7 @@ function ProfileScreen() {
           }}
         >
           <Text style={{ fontSize: 20, fontWeight: "bold", color: "white" }}>
-            @james_fitness
+            @jane_fitspo
           </Text>
           <Text style={{ marginVertical: 2, width: "100%", color: "#264653" }}>
             Fitness enthusiast living in Singapore
@@ -200,7 +166,8 @@ function ProfileScreen() {
         id="badges"
         style={{
           flexDirection: "column",
-          marginVertical: 5,
+          marginTop: 25,
+          marginBottom: 5,
           height: 250,
           alignItems: "flex-start",
           backgroundColor:'#f4a261',
