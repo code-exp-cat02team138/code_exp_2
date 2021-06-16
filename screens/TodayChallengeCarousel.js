@@ -7,6 +7,7 @@ const {width} = Dimensions.get("window");
 const challenges = [
   { title: "100 Push-Ups",
   description: "Do a 100 Push-Ups in 3 Minutes.",
+  detailedDescription: "Test your arms muscles with this Challenge! Do 100 Push-Ups in 3 Minutes, Take a video of yoourself and share it with everyone!",
   image: "https://www.helpguide.org/wp-content/uploads/young-woman-performing-pushups-indoors-768.jpg",
 }, { title: "3km Run",
   description: "Go on a 3km Run!",
@@ -37,8 +38,7 @@ export default class TodayChallengeCarousel extends React.Component {
       return(
         <View style={{width: "100%", height: "80%",}}>
         <ScrollView pagingEnabled horizontal  onScroll={this.change} style={{width: "100%", height: '100%',}}>
-        {challenges.map((item, index) => ( index % 2 == 0 ? 
-
+        {challenges.map((item, index) => ( index % 2 == 0 ?
           <View style={{width, height: "100%", flexDirection: "row", borderRadius: 20, backgroundColor: '#2a9d8f'}}>
             <Image
           key={index}
@@ -46,7 +46,7 @@ export default class TodayChallengeCarousel extends React.Component {
           <View id="Challenge Description" style={{flexDirection: "column", alignItems: "flex-end", justifyContent: 'center'}}>
             <Text style={{fontSize: 20, fontWeight: 'bolder', textAlign: 'right'}}>{item.title}</Text>
             <Text style={{width: 0.35 * width, marginLeft: 0.025 * width, marginTop:20, textAlign: 'right', fontSize:15, }}>{item.description}</Text>
-            <TouchableOpacity onPress={()=>this.props.navigation.navigate(this.props.screenname)} title="Challenge!" style={{backgroundColor: 'white', borderRadius: 10, padding: 5, marginTop:10}}>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate(this.props.screenname, {item})} title="Challenge!" style={{backgroundColor: 'white', borderRadius: 10, padding: 5, marginTop:10}}>
               <Text>Challenge!</Text>
             </TouchableOpacity>
           </View>

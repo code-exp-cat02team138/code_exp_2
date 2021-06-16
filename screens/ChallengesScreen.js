@@ -1,15 +1,17 @@
 import * as React from "react";
+import {useState} from 'react';
 import { Text, View, StyleSheet } from "react-native";
 import TodayChallengeCarousel from "./TodayChallengeCarousel";
 import SocialChallengeCarousel from "./SocialChallengeCarousel";
 import AllChallengeCarousel from "./AllChallengeCarousel";
 import { createStackNavigator } from "@react-navigation/stack";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Image } from "react-native";
 
 const challenges = [
   {
     title: "100 Push-Ups",
-    description: "Do a 100 Push-Ups in 3 Minutes.",
+    description: "Do 100 Push-Ups in 3 Minutes.",
+    detailedDescription: "Test your arms muscles with this Challenge! Do 100 Push-Ups in 3 Minutes, Take a video of yoourself and share it with everyone!",
     image:
       "https://www.helpguide.org/wp-content/uploads/young-woman-performing-pushups-indoors-768.jpg",
   },
@@ -88,15 +90,31 @@ function ChallengesScreen({ navigation }) {
   );
 }
 
-function SpecificChallenge() {
-  return <Text>spec challenge</Text>;
+function SpecificChallenge({navigation, route}) {
+  const [accepted, setAccepted] = useState(false);
+  const challenge = route.params.item;
+  return (
+    <View style={{flexDirection:'column', justifyContent:'flex-start', height:'100%', backgroundColor:'#f4a261', alignItems:'center'}}>
+        <Text style={{fontSize: 30, fontWeight:'bold', color:'white', backgroundColor:'#264653', width: '95%', textAlign: 'center', borderRadius: 20, marginVertical: 15}}>{challenge.title}</Text>
+        <Image source={{uri: challenge.image}} style={{width:'95%' , height: '35%', borderRadius: 30, }}></Image>
+        <View style={{height:'40%', width:'95%', backgroundColor: '#e9c46a', borderRadius: 20, marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
+          <Text style={{textAlign: 'center', fontSize: 20, lineHeight: 40, marginHorizontal: 10}}>{challenge.detailedDescription}</Text>
+        </View>
+        {!accepted && <TouchableOpacity style={{backgroundColor: '#e76f51', height: '8%', width:'95%', marginTop: '3%', borderRadius:20, flexDirection: 'row', justifyContent: 'center', alignItems:'center'}} onPress={()=>setAccepted(true)}>
+          <Text>Accept the Challenge!</Text>
+        </TouchableOpacity>}
+        {accepted && <View style={{backgroundColor: '#2a9d8f', height: '8%', width:'95%', marginTop: '3%', borderRadius:20, flexDirection: 'row', justifyContent: 'center', alignItems:'center'}}>
+          <Text>Challenge Accepted</Text>
+        </View>}
+    </View>
+    )
 }
 
 export default function ChallengeStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Challenges" component={ChallengesScreen} />
-      <Stack.Screen name="Specific Challenge" component={SpecificChallenge} />
+      <Stack.Screen name="Specific Challenge" component={SpecificChallenge} options={{headerTitle:"Challenge!"}} />
     </Stack.Navigator>
   );
 }
