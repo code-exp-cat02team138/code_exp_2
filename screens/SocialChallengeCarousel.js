@@ -18,7 +18,7 @@ const challenges = [
 },
 ]
 
-export default class TodayChallengeCarousel extends React.Component {
+export default class CooperateCarousel extends React.Component {
 
   state = {
     active: 0
