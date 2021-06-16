@@ -4,6 +4,7 @@ import TodayChallengeCarousel from "./TodayChallengeCarousel";
 import SocialChallengeCarousel from "./SocialChallengeCarousel";
 import AllChallengeCarousel from "./AllChallengeCarousel";
 import { createStackNavigator } from "@react-navigation/stack";
+import { TouchableOpacity } from "react-native";
 
 const challenges = [
   {
@@ -36,23 +37,49 @@ const challenges = [
 
 const Stack = createStackNavigator();
 
-function ChallengesScreen() {
+function ChallengesScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, flexDirection: "column", justifyContent:'space-between' }}>
-      <View style={{ flex:1 , backgroundColor: '#2a9d8f'}}>
-        <Text style={{ fontWeight: "bolder", fontSize: 20, color: 'white', marginBottom: 5, marginLeft: 14 }}>
-          Today's Challenges
-        </Text>
-        <TodayChallengeCarousel />
+    <View style={{ flexDirection: "column", height: "100%" }}>
+      <View style={{ height: "33.3%", backgroundColor: "#2a9d8f" }}>
+          <Text
+            style={{
+              fontWeight: "bolder",
+              fontSize: 20,
+              color: "white",
+              marginBottom: 5,
+              marginLeft: 14,
+            }}
+          >
+            Today's Challenges
+          </Text>
+          <TodayChallengeCarousel navigation={navigation} screenname={"Specific Challenge"} />
       </View>
-      <View style={{ flex:1 , backgroundColor: '#e9c46a' }}>
-        <Text style={{ fontWeight: "bolder", fontSize: 20,color: 'white', marginBottom: 5, marginRight: 11, textAlign: 'right'  }}>
+
+      <View style={{ height: "33.3%", backgroundColor: "#e9c46a" }}>
+        <Text
+          style={{
+            fontWeight: "bolder",
+            fontSize: 20,
+            color: "white",
+            marginBottom: 5,
+            marginRight: 11,
+            textAlign: "right",
+          }}
+        >
           Social Challenges
         </Text>
         <SocialChallengeCarousel />
       </View>
-      <View style={{ flex:1 , backgroundColor: '#f4a261' }}>
-        <Text style={{ fontWeight: "bolder", fontSize: 20, color: 'white', marginBottom: 5, marginLeft: 14  }}>
+      <View style={{ height: "33.3%", backgroundColor: "#f4a261" }}>
+        <Text
+          style={{
+            fontWeight: "bolder",
+            fontSize: 20,
+            color: "white",
+            marginBottom: 5,
+            marginLeft: 14,
+          }}
+        >
           All Challenges
         </Text>
         <AllChallengeCarousel />
@@ -61,10 +88,15 @@ function ChallengesScreen() {
   );
 }
 
+function SpecificChallenge() {
+  return <Text>spec challenge</Text>;
+}
+
 export default function ChallengeStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Challenges" component={ChallengesScreen} />
+      <Stack.Screen name="Specific Challenge" component={SpecificChallenge} />
     </Stack.Navigator>
   );
 }

@@ -1,5 +1,7 @@
 import React from 'react';
-import { ViewBase, Image, ScrollView, View, Dimensions, StyleSheet, Text } from 'react-native';
+import { ViewBase, Image, ScrollView, View, Dimensions, StyleSheet, Text, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const {width} = Dimensions.get("window");
 const challenges = [
@@ -7,7 +9,7 @@ const challenges = [
   description: "Do a 100 Push-Ups in 3 Minutes.",
   image: "https://www.helpguide.org/wp-content/uploads/young-woman-performing-pushups-indoors-768.jpg",
 }, { title: "3km Run",
-  description: "Go on a 3km Run around your neighbourhood. Track your run with a running app.",
+  description: "Go on a 3km Run!",
   image: "https://www.sciencemag.org/sites/default/files/styles/article_main_image_-_1280w__no_aspect_/public/1036780592-1280x720.jpg?itok=kgLC8iTd",
 }, { title: "Pump Iron",
   description: "Head to your nearest Gym and get a work out going!",
@@ -17,6 +19,7 @@ const challenges = [
   image: 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/10/Female_Yoga_1296x728-header-1296x729.jpg?w=1155&h=2268',
 },
 ]
+
 
 export default class TodayChallengeCarousel extends React.Component {
 
@@ -32,19 +35,23 @@ export default class TodayChallengeCarousel extends React.Component {
   }
     render() {
       return(
-        <View style={{width: "100%", height: "90%",}}>
+        <View style={{width: "100%", height: "80%",}}>
         <ScrollView pagingEnabled horizontal  onScroll={this.change} style={{width: "100%", height: '100%',}}>
         {challenges.map((item, index) => ( index % 2 == 0 ? 
-          <View style={{width, height: "100%", flexDirection: "row",}}>
+
+          <View style={{width, height: "100%", flexDirection: "row", borderRadius: 20, backgroundColor: '#2a9d8f'}}>
             <Image
           key={index}
-          source={{uri: item.image}} style={{ width:0.60 * width, height: 200, resizeMode: 'cover', borderTopRightRadius: 20, borderBottomRightRadius: 20}} />
+          source={{uri: item.image}} style={{ width:0.60 * width, height: '100%', resizeMode: 'cover', borderTopRightRadius: 20, borderBottomRightRadius: 20}} />
           <View id="Challenge Description" style={{flexDirection: "column", alignItems: "flex-end", justifyContent: 'center'}}>
             <Text style={{fontSize: 20, fontWeight: 'bolder', textAlign: 'right'}}>{item.title}</Text>
             <Text style={{width: 0.35 * width, marginLeft: 0.025 * width, marginTop:20, textAlign: 'right', fontSize:15, }}>{item.description}</Text>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate(this.props.screenname)} title="Challenge!" style={{backgroundColor: 'white', borderRadius: 10, padding: 5, marginTop:10}}>
+              <Text>Challenge!</Text>
+            </TouchableOpacity>
           </View>
           </View>
-          : <View style={{ width, height: 200, flexDirection: "row" }}>
+          : <View style={{width, height: "100%", flexDirection: "row", borderRadius: 20, backgroundColor: '#2a9d8f'}}>
           <View
             id="Challenge Description"
             style={{ flexDirection: "column", alignItems: "flex-start", }}
@@ -64,18 +71,19 @@ export default class TodayChallengeCarousel extends React.Component {
             >
               {item.description}
             </Text>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate(this.props.screenname)} title="Challenge!" style={{backgroundColor: 'white', borderRadius: 10, padding: 5,marginLeft: 15, marginTop:10}}>
+              <Text>Challenge!</Text>
+            </TouchableOpacity>
           </View>
           <Image
             key={index}
             source={{ uri: item.image }}
-            style={{ width: 0.65 * width, height: 200, resizeMode: "cover", borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }}
+            style={{ width: 0.65 * width, height: '100%', resizeMode: "cover", borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }}
           />
         </View>
         ))}
         </ScrollView>
         </View>
-  
-  
       )
   }
 }

@@ -79,84 +79,91 @@ function ProfileScreen() {
   function renderItem({ item }) {
     count++;
     return (
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "flex-start",
-          height: item.image ? 300 : 80,
-          width: "100%",
-          backgroundColor:
-            count % 3 == 0 ? "#2a9d8f" : count % 3 == 1 ? "#e9c46a" : "#f4a261",
-        }}
-      >
         <View
           style={{
-            flex: 2,
-            flexDirection: "column",
-            justifyContent: "flex-start",
-          }}
-        >
-          <Image
-            source={{ uri: PROFILE_IMG }}
-            style={{
-              width: 40,
-              height: 40,
-              marginLeft: 15,
-              marginTop: 15,
-              borderRadius: 100,
-            }}
-          ></Image>
-        </View>
-        <View
-          style={{
-            flexDirection: "column",
-            flex: 8,
-            justifyContent: "flex-start",
-            fontFamily: "System",
-          }}
-        >
-          <View>
-            <Text
-              style={{
-                fontSize: 14,
-                fontFamily: "System",
-                fontWeight: "bold",
-                color: "white",
-                marginTop: 15,
-              }}
-            >
-              @{item.username}
-            </Text>
-            <Text style={{ color: "white" }}>
-              {item.text.length > 110
-                ? `${item.text.substring(0, 111)}...read more`
-                : item.text}
-            </Text>
-          </View>
-          <View>
-            <Image
-              source={{ uri: item.image }}
-              style={{
-                width: "95%",
-                height: 210,
+            flexDirection: "row",
+            alignItems: "flex-start",
+            alignSelf: 'center',
+            height: item.image ? 300 : 80,
+            width: "95%",
+            backgroundColor:
+              count % 3 == 0
+                ? "#2a9d8f"
+                : count % 3 == 1
+                ? "#e9c46a"
+                : "#f4a261",
                 borderRadius: 20,
-                marginTop: 10,
+                marginVertical: 5
+          }}
+        >
+          <View
+            style={{
+              flex: 2,
+              flexDirection: "column",
+              justifyContent: "flex-start",
+            }}
+          >
+            <Image
+              source={{ uri: PROFILE_IMG }}
+              style={{
+                width: 40,
+                height: 40,
+                marginLeft: 15,
+                marginTop: 15,
+                borderRadius: 100,
               }}
-            />
+            ></Image>
+          </View>
+          <View
+            style={{
+              flexDirection: "column",
+              flex: 8,
+              justifyContent: "flex-start",
+              fontFamily: "System",
+            }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontSize: 14,
+                  fontFamily: "System",
+                  fontWeight: "bold",
+                  color: "white",
+                  marginTop: 15,
+                }}
+              >
+                @{item.username}
+              </Text>
+              <Text style={{ color: "white" }}>
+                {item.text.length > 110
+                  ? `${item.text.substring(0, 111)}...read more`
+                  : item.text}
+              </Text>
+            </View>
+            <View>
+              <Image
+                source={{ uri: item.image }}
+                style={{
+                  width: "95%",
+                  height: 210,
+                  borderRadius: 20,
+                  marginTop: 10,
+                }}
+              />
+            </View>
           </View>
         </View>
-      </View>
     );
   }
 
   return (
-    <ScrollView style={{ flexDirection: "column", backgroundColor: "#2a9d8f" }}>
+    <ScrollView style={{ flexDirection: "column", backgroundColor: "#264653" }}>
       <View
         id="dp_name_bio"
         style={{
           flexDirection: "row",
           backgroundColor: "#e9c46a",
-          width: "90%",
+          width: "98%",
           alignSelf: "center",
           marginTop: 10,
           borderRadius: 20,
@@ -178,6 +185,7 @@ function ProfileScreen() {
             flexDirection: "column",
             justifyContent: "center",
             marginLeft: 10,
+            borderRadius: 20
           }}
         >
           <Text style={{ fontSize: 20, fontWeight: "bold", color: "white" }}>
@@ -195,20 +203,20 @@ function ProfileScreen() {
           marginVertical: 5,
           height: 250,
           alignItems: "flex-start",
-          backgroundColor:'#f4a261'
+          backgroundColor:'#f4a261',
         }}
       >
         <Text
           style={{
             fontSize: 14,
-            marginVertical: 5,
+            marginTop: 5,
             width: "90%",
             paddingVertical: 1,
             borderRadius: 10,
             color: "black",
             textAlign: "left",
             fontWeight: 'bold',
-            marginLeft: 5
+            marginLeft: 15
           }}
         >
           Badges - Swipe to see challenges you've completed
@@ -221,10 +229,10 @@ function ProfileScreen() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "flex-start",
-          backgroundColor: "#2a9d8f",
+          backgroundColor: "#264653",
         }}
       >
-        <Text style={{alignSelf: 'flex-start', marginLeft:5, color:'white', fontWeight: 'bold'}}>Your Posts</Text>
+        <Text style={{alignSelf: 'flex-start', color:'white', fontWeight: 'bold', fontSize: 20, marginLeft: 15}}>Your Posts</Text>
         <FlatList
           style={{ width: "100%" }}
           data={SAMPLE_POSTS}

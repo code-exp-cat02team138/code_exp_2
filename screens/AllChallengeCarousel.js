@@ -32,30 +32,30 @@ export default class TodayChallengeCarousel extends React.Component {
   }
     render() {
       return(
-        <View style={{width: "100%", height: "90%",}}>
+        <View style={{width: "100%", height: "80%",}}>
         <ScrollView pagingEnabled horizontal  onScroll={this.change} style={{width: "100%", height: '100%',}}>
         {challenges.map((item, index) => ( index % 2 == 0 ? 
-          <View style={{width, height: "100%", flexDirection: "row",}}>
+          <View style={{width, height: "100%", flexDirection: "row", borderRadius: 20,}}>
             <Image
           key={index}
-          source={{uri: item.image}} style={{ width:0.60 * width, height: 200, resizeMode: 'cover', borderTopRightRadius: 20, borderBottomRightRadius: 20}} />
+          source={{uri: item.image}} style={{ width:0.60 * width, height: '100%', resizeMode: 'cover', borderTopRightRadius: 20, borderBottomRightRadius: 20}} />
           <View id="Challenge Description" style={{flexDirection: "column", alignItems: "flex-end", justifyContent: 'center'}}>
             <Text style={{fontSize: 20, fontWeight: 'bolder', textAlign: 'right'}}>{item.title}</Text>
             <Text style={{width: 0.35 * width, marginLeft: 0.025 * width, marginTop:20, textAlign: 'right', fontSize:15, }}>{item.description}</Text>
           </View>
           </View>
-          : <View style={{ width, height: 200, flexDirection: "row" }}>
+          : <View style={{width, height: "100%", flexDirection: "row", borderRadius: 20, }}>
           <View
             id="Challenge Description"
-            style={{ flexDirection: "column", alignItems: "flex-start" }}
+            style={{ flexDirection: "column", alignItems: "flex-start", }}
           >
-            <Text style={{ fontSize: 20, fontWeight: "bolder", textAlign: 'left', marginLeft: 15 }}>
+            <Text style={{ fontSize: 20, fontWeight: "bolder", textAlign: 'left', marginLeft: 15, }}>
               {item.title}
             </Text>
             <Text
               style={{
                 width: 0.35 * width,
-                marginLeft: 15,
+                marginHorizontal: 15,
                 marginTop: 20,
                 textAlign: "center",
                 fontSize: 15,
@@ -68,7 +68,7 @@ export default class TodayChallengeCarousel extends React.Component {
           <Image
             key={index}
             source={{ uri: item.image }}
-            style={{ width: 0.65 * width, height: 200, resizeMode: "cover", borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }}
+            style={{ width: 0.65 * width, height: '100%', resizeMode: "cover", borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }}
           />
         </View>
         ))}
