@@ -22,7 +22,7 @@ const SAMPLE_POSTS = [
   {
     username: "james_fitness",
     challengeText: "[CHALLENGE: 100 push-ups in 2 minutes]",
-    text: "Nice! challenge accepted, challenge completed. Come join me :)",
+    text: "Nice! Challenge completed!",
     id: "1",
     image:
       "https://thumbs.dreamstime.com/b/young-man-doing-push-up-handsome-sporty-vietnamese-ups-gym-floor-139977973.jpg",
@@ -168,7 +168,7 @@ function Post({ navigation, route }) {
             <View>
               <Image
                 source={{ uri: item.image }}
-                style={{ width: "90%", height: 210, borderRadius: 20 }}
+                style={{ width: "95%", height: 210, borderRadius: 20, marginTop: 10 }}
               />
             </View>
           </View>
@@ -233,7 +233,7 @@ function SpecificPostScreen({ navigation, route }) {
         {specItem.image && (
           <Image
             source={{ uri: specItem.image }}
-            style={{ width: "100%", height: 250, resizeMode: "contain" }}
+            style={{ width: "100%", height: 250, resizeMode: "contain", }}
           />
         )}
         <Text style={{ textAlign: "center", fontSize: 20, marginTop: 15 }}>
