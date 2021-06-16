@@ -361,7 +361,7 @@ function FeedStack({ navigation }) {
   );
 }
 
-function Create({ navigation }) {
+function Create({ navigation, route }) {
   const [text, setText] = useState("");
   const [image, setImage] = useState(null);
 

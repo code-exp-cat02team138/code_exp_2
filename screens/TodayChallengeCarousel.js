@@ -46,19 +46,19 @@ export default class CompeteCarousel extends React.Component {
         <View style={{width: "100%", height: "80%",}}>
         <ScrollView pagingEnabled horizontal  onScroll={this.change} style={{width: "100%", height: '100%',}}>
         {challenges.map((item, index) => ( index % 2 == 0 ?
-          <View style={{width, height: "100%", flexDirection: "row", borderRadius: 20, backgroundColor: '#2a9d8f'}}>
+          <View style={{width, height: "100%", flexDirection: "row", borderRadius: 20,}}>
             <Image
           key={index}
           source={{uri: item.image}} style={{ width:0.60 * width, height: '100%', resizeMode: 'cover', borderTopRightRadius: 20, borderBottomRightRadius: 20}} />
           <View id="Challenge Description" style={{flexDirection: "column", alignItems: "flex-end", justifyContent: 'center'}}>
             <Text style={{fontSize: 20, fontWeight: 'bolder', textAlign: 'right'}}>{item.title}</Text>
             <Text style={{width: 0.35 * width, marginLeft: 0.025 * width, marginTop:20, textAlign: 'right', fontSize:15, }}>{item.description}</Text>
-            <TouchableOpacity onPress={()=>this.props.navigation.navigate(this.props.screenname, {item})} title="Challenge!" style={{backgroundColor: '#d8e2dc', borderRadius: 10, padding: 5, marginTop:10}}>
-              <Text>Complete Challenge!</Text>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate(this.props.screenname, {item})} title="Challenge!" style={{backgroundColor: 'white', borderRadius: 10, padding: 5, marginTop:10}}>
+              <Text>Challenge!</Text>
             </TouchableOpacity>
           </View>
           </View>
-          : <View style={{width, height: "100%", flexDirection: "row", borderRadius: 20, backgroundColor: '#2a9d8f'}}>
+          : <View style={{width, height: "100%", flexDirection: "row", borderRadius: 20,}}>
           <View
             id="Challenge Description"
             style={{ flexDirection: "column", alignItems: "flex-start", }}
@@ -78,8 +78,8 @@ export default class CompeteCarousel extends React.Component {
             >
               {item.description}
             </Text>
-            <TouchableOpacity onPress={()=>this.props.navigation.navigate(this.props.screenname, {item})} title="Challenge!" style={{backgroundColor: '#d8e2dc', borderRadius: 10, padding: 5,marginLeft: 15, marginTop:10}}>
-              <Text>Complete Challenge!</Text>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate(this.props.screenname, {item})} title="Challenge!" style={{backgroundColor: 'white', borderRadius: 10, padding: 5,marginLeft: 15, marginTop:10}}>
+              <Text>Challenge!</Text>
             </TouchableOpacity>
           </View>
           <Image

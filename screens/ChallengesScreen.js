@@ -6,9 +6,6 @@ import SocialChallengeCarousel from "./SocialChallengeCarousel";
 import AllChallengeCarousel from "./AllChallengeCarousel";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TouchableOpacity, Image } from "react-native";
-import { Entypo } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import * as ImagePicker from "expo-image-picker";
 
 const challenges = [
   {
@@ -58,7 +55,7 @@ function ChallengesScreen({ navigation }) {
         >
           COMPETE
         </Text>
-        <TodayChallengeCarousel navigation={navigation} screenname={"Create"} />
+        <TodayChallengeCarousel navigation={navigation} screenname={"Specific Challenge"} />
       </View>
 
       <View style={{ height: "33.3%", backgroundColor: "#e9c46a" }}>
@@ -176,7 +173,7 @@ function SpecificChallenge({ navigation, route }) {
         </TouchableOpacity>
       )}
       {accepted && (
-        <View
+        <TouchableOpacity
           style={{
             backgroundColor: "#2a9d8f",
             height: "8%",
@@ -187,83 +184,11 @@ function SpecificChallenge({ navigation, route }) {
             justifyContent: "center",
             alignItems: "center",
           }}
+          onPress={() => navigation.navigate("Create")}
         >
-          <Text>Challenge Accepted</Text>
-        </View>
+          <Text>Challenge Accepted: Click to submit post</Text>
+        </TouchableOpacity>
       )}
-    </View>
-  );
-}
-
-function Create({ navigation }) {
-  const [image, setImage] = useState('https://preview.redd.it/l8lopfdn7eb51.jpg?width=720&format=pjpg&auto=webp&s=b2f241d3656e098efeedf9eb15f31e671d2801a7');
-  const [text, setText] = useState('')
-
-  useEffect(() => {
-    (async () => {
-      pickImage();
-      if (Platform.OS !== "web") {
-        const { status } =
-          await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== "granted") {
-          alert("Sorry, we need camera roll permissions to make this work!");
-        }
-      }
-    })();
-  }, []);
-
-  const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-
-    console.log(result);
-  };
-
-  return (
-    <View
-      style={{
-        flexDirection: "column",
-        alignItems: "center",
-        backgroundColor: "#e9c46a",
-        height: "100%",
-      }}
-    >
-      <Image source={{ uri: image }} style={styles.createImage} />
-      <View
-        style={{
-          flexDirection: "column",
-          width: "100%",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <TextInput
-          style={styles.textInput}
-          placeholderTextColor="white"
-          placeholder="Tell @sarah24 about your attempt!"
-          multiline
-          onChangeText={(e) => setText(e)}
-        />
-      </View>
-      <TouchableOpacity
-        title="Submit Post!"
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#2a9d8f",
-          paddingVertical: 10,
-          width: "90%",
-          borderRadius: 20,
-        }}
-        onPress={()=>navigation.navigate("Challenges")}
-      >
-        <Text>Submit Post!</Text>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -277,7 +202,6 @@ export default function ChallengeStack() {
         component={SpecificChallenge}
         options={{ headerTitle: "Challenge!" }}
       />
-      <Stack.Screen name="Create" component={Create} />
     </Stack.Navigator>
   );
 }
@@ -297,5 +221,5 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     textAlign: "center",
     borderRadius: 20,
-  }
+  },
 });
