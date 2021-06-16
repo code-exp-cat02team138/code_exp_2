@@ -110,7 +110,7 @@ function Post({ navigation, route }) {
         <View
           style={{
             flexDirection: "row",
-            alignItems: 'flex-start',
+            alignItems: "flex-start",
             height: item.image ? 300 : 80,
             width: "100%",
             backgroundColor:
@@ -125,7 +125,7 @@ function Post({ navigation, route }) {
             style={{
               flex: 2,
               flexDirection: "column",
-              justifyContent: 'flex-start',
+              justifyContent: "flex-start",
             }}
           >
             <Image
@@ -168,7 +168,12 @@ function Post({ navigation, route }) {
             <View>
               <Image
                 source={{ uri: item.image }}
-                style={{ width: "95%", height: 210, borderRadius: 20, marginTop: 10 }}
+                style={{
+                  width: "95%",
+                  height: 210,
+                  borderRadius: 20,
+                  marginTop: 10,
+                }}
               />
             </View>
           </View>
@@ -199,22 +204,35 @@ function Post({ navigation, route }) {
 
 function SpecificPostScreen({ navigation, route }) {
   let specItem = route.params.item;
+  let rando = Math.floor(Math.random() * 3);
   return (
-    <View id="entire screen" style={{ flexDirection: "column" }}>
+    <View
+      id="entire screen"
+      style={{
+        flexDirection: "column",
+        backgroundColor:
+          rando % 3 == 0 ? "#2a9d8f" : count % 3 == 1 ? "#e9c46a" : "#f4a261",
+          justifyContent: 'flex-start',
+          alignItems: 'flex-start',
+          height: '100%'
+      }}
+    >
       <View
         style={{
-          height: 80,
-          width: "100%",
+          width: "90%",
           flexDirection: "row",
           alignItems: "center",
+          marginBottom: 10,
+          marginLeft: 8
         }}
       >
         <Image
           source={{ uri: PROFILE_IMG }}
           style={{
-            width: 40,
-            height: 40,
+            width: 30,
+            height: 30,
             marginLeft: 10,
+            marginTop: 10,
             borderRadius: 100,
           }}
         ></Image>
@@ -223,27 +241,27 @@ function SpecificPostScreen({ navigation, route }) {
             fontSize: 15,
             fontWeight: "bold",
             marginLeft: 10,
-            color: "#3e9ed6",
+            color: "white",
           }}
         >
           @{route.params.item.username}
         </Text>
       </View>
-      <View id="picture and post" style={{ flexDirection: "column" }}>
+      <View id="picture and post" style={{ flexDirection: "column", width: '100%' }}>
         {specItem.image && (
           <Image
             source={{ uri: specItem.image }}
-            style={{ width: "100%", height: 250, resizeMode: "contain", }}
+            style={{ width: "90%", height: 250, resizeMode: "cover", borderRadius: 30, alignSelf:'center' }}
           />
         )}
-        <Text style={{ textAlign: "center", fontSize: 20, marginTop: 15 }}>
+        <Text style={{ textAlign: "center", fontSize: 20, marginTop: 15, color: 'white' }}>
           "{specItem.text}"
         </Text>
       </View>
       {specItem.comments && (
         <View
           id="comment box"
-          style={{ flexDirection: "column", marginTop: 20 }}
+          style={{ flexDirection: "column", marginTop: 20, }}
         >
           {specItem.comments.map((c) => {
             return (
@@ -259,12 +277,12 @@ function SpecificPostScreen({ navigation, route }) {
                   style={{
                     marginLeft: 10,
                     fontWeight: "bold",
-                    color: "#3e9ed6",
+                    color: 'white'
                   }}
                 >
                   @{c.commenter}
                 </Text>
-                <Text style={{ marginLeft: 20, flexWrap: "wrap" }}>
+                <Text style={{ marginLeft: 20, flexWrap: "wrap", color: '#264653'}}>
                   {c.comment}
                 </Text>
               </View>

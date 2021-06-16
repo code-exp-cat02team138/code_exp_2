@@ -57,6 +57,7 @@ export default class TodayChallengeCarousel extends React.Component {
                 width: 0.35 * width,
                 marginLeft: 15,
                 marginTop: 20,
+                marginRight: 10,
                 textAlign: "center",
                 fontSize: 15,
                 textAlign: 'left'
